@@ -434,7 +434,7 @@ class Message:
         self.payload.set_payload(data)
         self.payload.set_type(content_type)
 
-        if content_type.lower().startswith("application/octet-stream"):
+        if not content_type.lower().startswith("text/"):
             self.payload["Content-Transfer-Encoding"] = "binary"
         else:
             encoders.encode_7or8bit(self.payload)
